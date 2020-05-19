@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- 导入外部配置文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+<!--    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+<!--        <property name="locations">-->
+<!--            <list>-->
+<!--                <value>classpath*:db.properties</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!--    2.配置数据源spring-jdbc，提供对应的类提供数据库连接-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${abc.driver}"/>
+        <property name="url" value="${abc.url}"/>
+        <property name="username" value="${abc.username}"/>
+        <property name="password" value="${abc.password}"/>
+    </bean>
+
+<!--    3.配置SQLSessionFactory类，是mybatis-spring类中提供用来整合mybatis和spring的类，创建工厂-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        指定dataSource，连接数据库需要-->
+        <property name="dataSource" ref="dataSource"/>
+<!--        用来加载mybatis主配置文件-->
+        <property name="configLocation" value="mybatis-config.xml"/>
+    </bean>
+<!--    mapper配置,用来创建各种mapper-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+<!--    用于扫描mapper所在的包，指定给哪些接口生成mapper对象-->
+        <property name="basePackage" value="com.xing.dao"/>
+
+<!--        与factory进行关联,factory创建SQLsession，SQLsession对象创建mapper-->
+        <property name="sqlSessionFactoryBeanName" value="factory"/>
+    </bean>
+
+<!--    service-->
+    <bean id="userService" class="com.xing.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+
+    </bean>
+<!--    servlet-->
+<!--    <bean id="userServlet" class="com.xing.servlet.UserServlet">-->
+<!--        <property name="userService" ref="userService"/>-->
+<!--    </bean>-->
+
+    <context:component-scan base-package="com.xing.servlet"/>
+</beans>
