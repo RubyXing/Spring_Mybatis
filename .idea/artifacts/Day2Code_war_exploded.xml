@@ -34,6 +34,13 @@
           <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/lombok.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/jackson-core-2.2.3.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/fastjson-1.2.66.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/c3p0-0.9.5.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/aopalliance-1.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/aspectjrt-1.8.10.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/aspectjweaver-1.8.10.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/commons-logging-1.1.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Day2Code/web/WEB-INF/lib/mchange-commons-java-0.2.11.jar" />
+          <element id="library" level="module" name="lib" module-name="Day2Code" />
         </element>
       </element>
     </root>
