@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class Launcher2 {
     public static void main(String[] args) {
         Launcher2 l = new Launcher2();
-        l.myTest1();
+        l.myTest2();
 //        l.myTest2();
     }
 
@@ -29,11 +29,9 @@ public class Launcher2 {
     }
 
     public void myTest2(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-
+//        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 //        System.out.println(Arrays.toString(context.getBeanDefinitionNames()));
-        UserServlet userServlet = (UserServlet)context.getBean("userServlet");
-        
+
     }
 
 }

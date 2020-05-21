@@ -1,14 +1,22 @@
 package com.xing.pojo;
 
+import lombok.Data;
 import lombok.experimental.Accessors;
 
-@Accessors(chain = true)
 public class User {
 
     private long uid;
     private String uname;
     private String upwd;
 
+    public User() {
+    }
+
+    public User(long uid, String uname, String upwd) {
+        this.uid = uid;
+        this.uname = uname;
+        this.upwd = upwd;
+    }
 
     public long getUid() {
         return uid;

@@ -4,6 +4,7 @@ package com.xing.servlet;/*
  */
 
 import com.xing.pojo.User;
+import com.xing.service.UserService;
 import com.xing.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,13 +22,12 @@ import java.util.List;
 @WebServlet("/allUser")
 public class UserServlet extends HttpServlet {
 
-    @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @Override
     public void init() throws ServletException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        userService = (UserServiceImpl)context.getBean("userService");
+        userService = context.getBean(UserService.class);
     }
 
     @Override
@@ -37,9 +37,11 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User> users = userService.selectAll();
+//        List<User> users = userService.selectAll();
+//        resp.getWriter().write(String.valueOf(users));
 
-
+        resp.getWriter().write(userService.addUser(new User()));
 
     }
+
 }
